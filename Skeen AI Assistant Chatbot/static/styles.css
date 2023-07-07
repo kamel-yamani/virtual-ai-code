@@ -1,0 +1,120 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    background: rgba(194, 194, 194, 0.20);
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+
+}
+
+.chat-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.title {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.chat-container {
+    width: 400px;
+    height: 600px;
+    margin-bottom: 20px;
+    background-color: #FEFEFE;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+/* Hide the scroll bar */
+.chat-container::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.chat-container::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 10px;
+    color: #505050;
+}
+
+.user-message {
+    justify-content: flex-end;
+    color: #FFF;
+}
+
+.bubble {
+    padding: 10px;
+    white-space: pre-line;
+    max-width: 70%;
+}
+
+.user-message .bubble {
+    background-color: #C59E9B;
+    align-self: flex-end;
+    border-radius: 25px 0 25px 25px;
+    text-align: left;
+}
+
+.chatbot-message .bubble {
+    background-color: #EEE;
+    align-self: flex-start;
+    border-radius: 25px 25px 25px 0;
+    text-align: left;
+}
+
+.user-input-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #FEFEFE;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 400px;
+}
+
+.user-input {
+    flex: 1;
+    border: none;
+    background-color: transparent;
+    padding: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.user-input::placeholder {
+    color: #999;
+}
+
+.submit-btn {
+    padding: 8px 12px;
+    background-color: #FEFEFE;
+    color: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+.fa-paper-plane {
+    background-color: #FEFEFE;
+    color: #505050;
+}

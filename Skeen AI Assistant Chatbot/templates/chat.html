@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Skincare Chatbot</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel:bold&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:medium&display=swap">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container chat-wrapper">
+        <h1 class="title">Skeen Assistant</h1>
+        <div class="chat-container" id="chat-container"></div>
+        <form id="chat-form">
+            <div class="input-group mb-3 user-input-wrapper">
+                <input type="text" class="form-control user-input" id="user-input" placeholder="Ask a question">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary submit-btn">
+                        <i class="fas fa-paper-plane"></i> 
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var chatContainer = $('#chat-container');
+            var chatForm = $('#chat-form');
+            var userInput = $('#user-input');
+
+            chatForm.submit(function (event) {
+                event.preventDefault();
+                var userQuery = userInput.val();
+                displayMessage('user', userQuery);
+                userInput.val('');
+
+                displayTypingIndicator();
+
+                $.post('/chat', { user_query: userQuery }, function (data) {
+                    var response = data.response;
+                    removeTypingIndicator();
+                    displayMessage('chatbot', response);
+                });
+            });
+
+            function displayTypingIndicator() {
+                setTimeout(function () {
+                    var typingIndicator = $('<div class="typing-indicator">Skeen Assistant is typing...</div>');
+                    chatContainer.append(typingIndicator);
+                    chatContainer.scrollTop(chatContainer.prop('scrollHeight'));
+                }, 1000); // 1 second delay
+            }
+
+            function removeTypingIndicator() {
+                $('.typing-indicator').remove();
+            }
+
+            function displayMessage(role, content) {
+                var messageClass = role === 'user' ? 'user-message' : 'chatbot-message';
+                var message = $('<div class="message ' + messageClass + '"></div>');
+                var bubble = $('<div class="bubble"></div>').text(content);
+                message.append(bubble);
+                chatContainer.append(message);
+                chatContainer.scrollTop(chatContainer.prop('scrollHeight'));
+            }
+        });
+
+    </script>
+</body>
+
+</html>
