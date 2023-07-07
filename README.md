@@ -15,8 +15,5 @@ Artificial intelligence is not widely used in the skin health sector, making it 
 ## Accomplishments that we’re proud of
 We are proud of our model’s ability to detect 23 skin conditions with good accuracy. Additionally, our data analytics demonstrate the feasibility of using health data from apps and devices to identify users’ bad habits that may be contributing to their skin problems. We are also proud of our AI chatbot, which provides users with personalized skincare advice.
 
-## What we learned
-We improved our skills in technologies such as React Native and TensorFlow and learned deep learning techniques using convolutional neural networks. We also learned how to use APIs to collect data and perform data analytics.
-
 ## What’s next for SKEEN
 We plan to expand our solution to address more health-related concerns and identify more potential causes from users’ lifestyles.
